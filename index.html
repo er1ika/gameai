@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INFERNUM — 3D-шутер в стиле Doom</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23200'/%3E%3Cpath d='M3 13 8 2l5 11-5-3z' fill='%23f60'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <canvas id="view"></canvas>
+    <canvas id="hud"></canvas>
+
+    <div id="hint" class="hidden">Кликните по экрану, чтобы захватить мышь</div>
+
+    <section id="screen-menu" class="screen">
+      <div class="panel">
+        <h1 class="logo">INFERNUM</h1>
+        <p class="tagline">3D-шутер старой школы</p>
+        <div class="buttons" id="difficulty">
+          <button data-diff="easy">Легко</button>
+          <button data-diff="normal" class="primary">Нормально</button>
+          <button data-diff="hard">Кошмар</button>
+        </div>
+        <p class="note">Выберите сложность, чтобы начать</p>
+        <div class="controls">
+          <div><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>движение</span></div>
+          <div><kbd>Мышь</kbd> / <kbd>←</kbd><kbd>→</kbd><span>обзор</span></div>
+          <div><kbd>ЛКМ</kbd> / <kbd>Пробел</kbd><span>огонь</span></div>
+          <div><kbd>E</kbd><span>открыть дверь</span></div>
+          <div><kbd>Shift</kbd><span>бег</span></div>
+          <div><kbd>1</kbd>–<kbd>5</kbd> / <kbd>колесо</kbd><span>оружие</span></div>
+          <div><kbd>Tab</kbd><span>карта</span></div>
+          <div><kbd>M</kbd><span>музыка</span></div>
+          <div><kbd>Esc</kbd> / <kbd>P</kbd><span>пауза</span></div>
+        </div>
+        <div class="settings" data-settings></div>
+      </div>
+    </section>
+
+    <section id="screen-pause" class="screen hidden">
+      <div class="panel">
+        <h2>ПАУЗА</h2>
+        <div class="buttons column">
+          <button id="btn-resume" class="primary">Продолжить</button>
+          <button id="btn-restart">Начать уровень заново</button>
+          <button id="btn-quit">В главное меню</button>
+        </div>
+        <div class="settings" data-settings></div>
+      </div>
+    </section>
+
+    <section id="screen-dead" class="screen hidden tint-red">
+      <div class="panel">
+        <h2 class="blood">ВЫ ПОГИБЛИ</h2>
+        <div class="buttons column">
+          <button id="btn-retry" class="primary">Попробовать снова</button>
+          <button id="btn-dead-quit">В главное меню</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-inter" class="screen hidden">
+      <div class="panel">
+        <h2 id="inter-title">УРОВЕНЬ ПРОЙДЕН</h2>
+        <p class="tagline" id="inter-name"></p>
+        <table class="stats">
+          <tr><td>Убито</td><td id="stat-kills"></td></tr>
+          <tr><td>Предметы</td><td id="stat-items"></td></tr>
+          <tr><td>Время</td><td id="stat-time"></td></tr>
+        </table>
+        <div class="buttons column">
+          <button id="btn-next" class="primary">Дальше</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-error" class="screen hidden">
+      <div class="panel">
+        <h2>Нет WebGL</h2>
+        <p class="note">Браузер не смог создать WebGL-контекст. Включите аппаратное ускорение или попробуйте другой браузер.</p>
+      </div>
+    </section>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
